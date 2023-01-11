@@ -1,0 +1,44 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Registro{% endblock %}
+
+{% block background %}{% load static %}{% static 'user/img/licor2.png' %}{% endblock %}
+
+{% block headers %}
+{%load static%}
+	<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+     <header class="masthead" width="800" height="400"  style="background-image: url('{% static 'user/img/licor2.png' %} ')">
+        <div class="overlay"></div>
+          <div class="container">
+             <div class="row">
+               <div class="col-lg-8 col-md-10 mx-auto">
+                 <div class="site-heading">
+          
+                </div>
+              </div>
+           </div>
+        </div>
+      </header>
+{% endblock %} 
+
+{% block contend %}
+<div class="wrapper row3">
+	<main class="container clear"> 
+	  <div class="content three_quarter"> 
+		  <h2>Logout Complete</h2>
+			<div class="one_third first">
+			  <p>Has salido de la sesión correctamente.</p>
+			</div>
+			<div class="one_third ">
+			  <p>Volver al Inicio <a href="{% url 'home' %}"> Aquí </a></p>
+			</div>
+			<div class="one_third last">
+			  <p>Iniciar sesión nuevamente <a href="{% url 'login' %}"> Aquí </a></p>
+			</div>
+	  </div>
+	  <!-- / main body -->
+	  <div class="clear"></div>
+	</main>
+  </div>
+{% endblock %}

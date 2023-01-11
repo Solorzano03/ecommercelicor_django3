@@ -1,0 +1,50 @@
+{% extends 'core/base.html' %}
+    {%block title%}categorias{%endblock%} 
+    {%block contend%}
+    <div class="container">
+        <h1>categorias </h1>
+        <nav style="--bs-breadcrumb-divider: '|';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'categorias' %}">Todos</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'cervezas' %}">Cerveza</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'whisky' %}">whisky</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'vodka' %}">vodka</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'champagne' %}">champagne</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'vinos' %}">vinos</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'ron' %}">ron</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'tequila' %}">tequila</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'aguardiente' %}">aguardiente</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'coctel' %}">coctel</a></li>
+                </ol>
+         </nav>
+        <div class="row">
+        {% block cards  %}
+        {% for productos in productos  %}
+            <div class="col-sm-3 mb-5">
+        <!-- aqui card -->
+                <div class="card shadow " style="width: 18rem;">
+                    {% if productos.imagen %}
+                    <img src="{{productos.imagen.url}}" height="250" class="card-img-top" alt="imagen">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title" style=" font-weight: bold ;">{{productos.marca}}</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <div class="btn-toolbar justify-content-between container">
+                        <div class="btn-group border shadow p-2"role="group" aria-label="First group">
+                            <span>${{ productos.precio }} </span>
+                        </div>
+                         {% if user.is_authenticated %}
+                        <div class="input-group">
+                            <button class="btn btn-primary" type="button"><i class="bi bi-cart-plus-fill"></i></button>
+                        </div>
+                        {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+    {% endfor %}
+    {% endblock  %}
+    {% include 'core/paginator.html' %}
+        </div>
+        </div>
+    {%endblock%}
