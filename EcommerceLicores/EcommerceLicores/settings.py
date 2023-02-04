@@ -29,9 +29,11 @@ SECRET_KEY = 'django-insecure-%%_zk+)7r&!jh10*h(k^&5@+^z%2qh75s%fz!v_=1r-u89h9u9
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+#DEBUG = False
 
 ALLOWED_HOSTS = []
 
+#ALLOWED_HOSTS = ['licores.pythonanywhere.com', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -45,6 +47,8 @@ INSTALLED_APPS = [
     'core',
     'Productos',
     'user',
+    'carrito',
+    
 ]
 
 MIDDLEWARE = [
@@ -70,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'carrito.context_processor.total_carrito',
             ],
         },
     },
@@ -85,7 +90,7 @@ DATABASES = {
 
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME':  'db.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -123,6 +128,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = 'static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -133,3 +140,11 @@ MEDIA_URL='media/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# CONFIGURACION DE EMAIL
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "stevensolo017@gmail.com"
+EMAIL_HOST_PASSWORD = "grvemzwyvxdoqojh"

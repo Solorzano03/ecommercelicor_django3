@@ -2,15 +2,15 @@
 {% block cards %}
 
         {% for productos in aguardiente  %}
-            <div class="col-sm-3 mb-5">
+            <div class="col me-md-3 me-sm-5 mb-5">
         <!-- aqui card -->
-                <div class="card shadow " style="width: 18rem;">
+                <div class="card shadow " style="width: 18rem; height: 36rem;">
                     {% if productos.imagen %}
                     <img src="{{productos.imagen.url}}" height="250" class="card-img-top" alt="imagen">
                     {% endif %}
                     <div class="card-body">
                         <h5 class="card-title" style=" font-weight: bold ;">{{productos.marca}}</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text">{{ productos.descripcion }}</p>
                         <div class="btn-toolbar justify-content-between container">
                         <div class="btn-group border shadow p-2" role="group" aria-label="First group">
                             <span>${{ productos.precio }} </span>

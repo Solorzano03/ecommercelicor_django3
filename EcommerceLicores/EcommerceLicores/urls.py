@@ -22,6 +22,8 @@ from user.views import *
 from user.forms import *
 from django.contrib.auth import  views as auth_views
 from django.conf.urls.static import static
+from carrito import views as carrito
+from django.contrib.auth import views as auth_views #import this
 
 urlpatterns = [
     path('',views_core.home, name="home"),
@@ -40,6 +42,15 @@ urlpatterns = [
     path('login/', CustomLoginView.as_view(redirect_authenticated_user=True, template_name = 'user/login.html',authentication_form=loginForm) , name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='user/logout.html'), name='logout'),
     path('admin/', admin.site.urls),
+    path('carrito/', carrito.carrito, name='carrito'),
+    path('agregar/<int:id>/', carrito.agregar_producto, name="Add"),
+    path('eliminar/<int:id>/', carrito.eliminar_producto, name="Del"),
+    path('restar/<int:id>/', carrito.restar_producto, name="Sub"),
+    path('limpiar/', carrito.limpiar_carrito, name="CLS"),
+    path('restablecer-contraseña/', auth_views.PasswordResetView.as_view(template_name="user/password-reset.html"), name='password_reset'),
+    path('restablecer-contraseña-enviado/', auth_views.PasswordResetDoneView.as_view(template_name="user/password_reset_done.html"), name='password_reset_done'),
+    path('restablecer/<uidb64>/<token>', auth_views.PasswordResetConfirmView.as_view(template_name="user/password-confirm.html"), name='password_reset_confirm'),
+    path('restablecer-contraseña-completa/', auth_views.PasswordResetCompleteView.as_view(template_name="user/password_reset_complete.html"), name='password_reset_complete'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

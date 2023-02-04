@@ -26,6 +26,7 @@ class product (models.Model):
     marca =models.CharField(verbose_name="Marca", max_length=150, null=True, blank=True)
     imagen=models.ImageField(verbose_name="imagen",upload_to="imagen" ,null=True, blank=True)
     precio=models.DecimalField(verbose_name="precio",decimal_places=2 , max_digits=5, null=True, blank=True)
+    descripcion=models.CharField(verbose_name="descripcion",max_length=350,null=True, blank=True)
 
     def __str__(self):
         return f"{self.categoria.name}/{self.marca}"

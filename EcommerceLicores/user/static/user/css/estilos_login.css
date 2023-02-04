@@ -61,15 +61,15 @@ p{
 .link:hover{
      color: cadetblue;
 }
-@media(min-width:768px)
-{
-    .formulario{
-        margin: auto;
-        width: 500px;
-        margin-top: 150px;
-        border-radius: 2%;
+
+@media (max-width: 991) {
+    .imagen-login{
+        height: 3rem !important;
     }
 }
+.gradient-custom{
+    background-position: center center;
+  }
 
 
 

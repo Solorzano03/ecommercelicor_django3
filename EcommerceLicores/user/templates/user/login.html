@@ -23,19 +23,22 @@
 
 {% block contend %}
  {% load static %}
-        <div class="container align-items-center py-5">
-          <div class="container">
-            <div class="row align-items-center rounded-3 bg-light">
-              <div class="col-sm-4 col-md-4 col-lg-4">
-                <div class="text-center pt-md-5 my-md-5">
-                  <img src="{% static 'core/img/logo.jpeg' %}"  alt="logo">
+       <div class="container  mt-5 my-4 gradient-custom">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-xl-10">
+                    <div class="card rounded-4 contenido">
+                        <div class="card-body p-4">
+                            <div class="row d-flex align-items-center">
+                                <div class="col-md-5 p-2 col-xl-5">
+                                    <div class="text-center pt-md-5 pb-5 my-md-5">
+                  <img class="imagen-login" src="{% static 'core/img/logo.jpeg' %}"  alt="logo">
                 </div>
               </div>
-              <div class="col-sm-7 col-md-7 col-lg-7">
-                <div class="container py-4">
-                  <h1 class="centrar">Inicio de Sesión</h1>
-                </div>
-                <form class="formulario" method="POST">
+              <div class=" col-md-7 p-3 col-x-5">
+              
+                  <h1 class="fw-bold-md-4 pb-2 text-center">Inicio de Sesión</h1>
+                <form  method="POST">
                   {% csrf_token %}
                   {% if form.errors %}
                     <div class="alert alert-danger alert-dismissible" role="alert">
@@ -62,7 +65,7 @@
                     {{ form.remember_me }}
                   </div>
                   <div class="mb-4 py-1 text-end">
-                    <a href="#">Olvidó contraseña?</a>
+                    <a href="{% url 'password_reset' %}">Olvidó contraseña?</a>
                   </div>
                   <div class="d-grid gap-2 col-6 mx-auto">
                     <button class="btn btn-primary" type="submit">Iniciar Sesion</button>
@@ -74,6 +77,10 @@
                 </form>
               </div>
             </div>
+          </div>
+        </div>
+        </div>
+        </div>
           </div>
         </div>
       {% endblock %}
